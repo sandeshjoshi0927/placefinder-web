@@ -31,11 +31,9 @@ export class PlaceDetailsComponent implements OnChanges {
 
   ngOnChanges(): void {
     this.state.set('loading');
-    console.log('hitting here');
 
     this.placesService.getPlaceById(this.id).subscribe({
       next: (place) => {
-        console.log('hitting here 2');
         this.place.set(place);
         this.state.set('loaded');
       },
