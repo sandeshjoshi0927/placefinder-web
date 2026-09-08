@@ -10,13 +10,14 @@ import { CommonModule } from '@angular/common';
 import { RouterLink } from '@angular/router';
 import { PlacesService } from '@core/services/places.service';
 import { Place } from '@core/models/place.model';
+import { MapComponent } from '@features/places/map/map.component';
 
 type LoadState = 'loading' | 'loaded' | 'error';
 
 @Component({
   selector: 'app-place-details',
   standalone: true,
-  imports: [CommonModule, RouterLink],
+  imports: [CommonModule, RouterLink, MapComponent],
   changeDetection: ChangeDetectionStrategy.OnPush,
   templateUrl: './place-details.component.html',
   styleUrl: './place-details.component.css',
