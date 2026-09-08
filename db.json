@@ -1,0 +1,15 @@
+{
+  "users": [{ "id": 1, "email": "test@test.com", "password": "test1234", "name": "Test User" }],
+  "places": [
+    {
+      "id": 1,
+      "name": "Patan Durbar Square",
+      "category": "Heritage",
+      "thumbnail": "...",
+      "description": "...",
+      "address": "...",
+      "lat": 27.6727,
+      "lng": 85.325
+    }
+  ]
+}
