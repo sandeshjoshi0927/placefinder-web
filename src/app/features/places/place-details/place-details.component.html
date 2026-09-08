@@ -1,0 +1,22 @@
+<div class="place-details">
+  @switch (state()) {
+    @case ('loading') {
+      <p>Loading place…</p>
+    }
+    @case ('error') {
+      <p class="error" role="alert">
+        This place could not be found.
+        <a routerLink="/places">Back to list</a>
+      </p>
+    }
+    @case ('loaded') {
+      @if (place(); as p) {
+        <a class="back" routerLink="/places">&larr; Back to list</a>
+        <h1>{{ p.name }}</h1>
+        <p class="category">{{ p.category }}</p>
+        <p>{{ p.description }}</p>
+        <p class="address">{{ p.address }}</p>
+      }
+    }
+  }
+</div>

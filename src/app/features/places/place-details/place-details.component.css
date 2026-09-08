@@ -1,0 +1,25 @@
+.place-details {
+  max-width: 560px;
+  margin: 1.5rem auto;
+}
+
+.back {
+  display: inline-block;
+  margin-bottom: 0.75rem;
+  color: inherit;
+}
+
+.category {
+  color: #666;
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+}
+
+.address {
+  color: #444;
+}
+
+.error {
+  color: #c0392b;
+}

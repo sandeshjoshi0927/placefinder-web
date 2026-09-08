@@ -1,0 +1,37 @@
+<div class="places-list">
+  <input
+    type="search"
+    placeholder="Search places…"
+    aria-label="Search places by name"
+    [formControl]="searchControl"
+  />
+
+  @switch (state()) {
+    @case ('loading') {
+      <p>Loading places…</p>
+    }
+    @case ('error') {
+      <p class="error" role="alert">
+        Could not load places.
+        <button type="button" (click)="retry()">Retry</button>
+      </p>
+    }
+    @case ('loaded') {
+      @if (filteredPlaces().length === 0) {
+        <p>No places match your search.</p>
+      } @else {
+        <ul>
+          @for (place of filteredPlaces(); track place.id) {
+            <li>
+              <a [routerLink]="['/places', place.id]">
+                <img [src]="place.thumbnail" [alt]="place.name" width="48" height="48" />
+                <span class="name">{{ place.name }}</span>
+                <span class="category">{{ place.category }}</span>
+              </a>
+            </li>
+          }
+        </ul>
+      }
+    }
+  }
+</div>

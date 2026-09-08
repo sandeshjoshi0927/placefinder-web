@@ -15,7 +15,9 @@ export const routes: Routes = [
   },
   {
     path: 'places',
-    loadComponent: () => import('@features/places/place.component').then((m) => m.PlaceComponent),
+    canActivate: [authGuard],
+    loadChildren: () => import('./features/places/places.routes').then((m) => m.PLACES_ROUTES),
   },
   { path: '', pathMatch: 'full', redirectTo: 'login' },
+  { path: '**', redirectTo: 'places' },
 ];
