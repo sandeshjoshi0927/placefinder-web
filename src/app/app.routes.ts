@@ -7,6 +7,11 @@ export const routes: Routes = [
       import('@features/auth/login/login.component').then((m) => m.LoginComponent),
   },
   {
+    path: 'profile',
+    loadComponent: () =>
+      import('@features/profile/profile.component').then((m) => m.ProfileComponent),
+  },
+  {
     path: 'places',
     loadComponent: () => import('@features/places/place.component').then((m) => m.PlaceComponent),
   },

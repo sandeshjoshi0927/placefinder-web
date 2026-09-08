@@ -53,6 +53,23 @@ export class AuthService {
     this.router.navigateByUrl('/login');
   }
 
+  updateName(name: string): Observable<AuthUser> {
+    const user = this._currentUser();
+    if (!user) {
+      return throwError(() => new Error('No user is logged in'));
+    }
+    return this.http.patch<User>(`${environment.apiUrl}/users/${user.id}`, { name }).pipe(
+      map((updated) => {
+        const { password: _pw, ...authUser } = updated;
+        return authUser;
+      }),
+      tap((authUser) => {
+        this._currentUser.set(authUser);
+        this.persistUser(authUser);
+      }),
+    );
+  }
+
   // private helpers
   private setSession(user: AuthUser): void {
     const token = btoa(`${user.id}:${Date.now()}`);
@@ -68,6 +85,13 @@ export class AuthService {
       return JSON.parse(raw) as StoredSession;
     } catch {
       return null;
+    }
+  }
+
+  private persistUser(user: AuthUser): void {
+    const token = this._token();
+    if (token) {
+      localStorage.setItem(STORAGE_KEY, JSON.stringify({ token, user } satisfies StoredSession));
     }
   }
 }

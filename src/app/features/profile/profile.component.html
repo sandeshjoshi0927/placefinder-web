@@ -1,0 +1,24 @@
+<div class="profile-page">
+  @if (user(); as u) {
+    <div class="header-row">
+      <app-avatar [name]="u.name"></app-avatar>
+      <div>
+        <p class="name">{{ u.name }}</p>
+        <p class="email">{{ u.email }}</p>
+      </div>
+    </div>
+
+    <form [formGroup]="form" (ngSubmit)="save()">
+      <label for="name">Display name</label>
+      <input id="name" type="text" formControlName="name" />
+
+      @if (saveError()) {
+        <p class="error" role="alert">{{ saveError() }}</p>
+      }
+
+      <button type="submit" [disabled]="saveDisabled()">
+        {{ saving() ? 'Saving…' : 'Save' }}
+      </button>
+    </form>
+  }
+</div>
