@@ -4,3 +4,5 @@ export interface User {
   password?: string;
   name: string;
 }
+
+export type AuthUser = Omit<User, 'password'>;

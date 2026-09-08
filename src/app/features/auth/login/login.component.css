@@ -1,0 +1,18 @@
+.login-page {
+  display: flex;
+  justify-content: center;
+  padding-top: 4rem;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  width: 280px;
+}
+
+.error {
+  color: #c0392b;
+  font-size: 0.875rem;
+  margin: 0;
+}

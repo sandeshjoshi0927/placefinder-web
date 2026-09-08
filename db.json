@@ -6,10 +6,110 @@
       "name": "Patan Durbar Square",
       "category": "Heritage",
       "thumbnail": "...",
-      "description": "...",
-      "address": "...",
+      "description": "A historic palace square in the heart of Patan, known for its Newari architecture, temples, courtyards, and traditional art.",
+      "address": "Mangal Bazaar, Lalitpur, Nepal",
       "lat": 27.6727,
       "lng": 85.325
+    },
+    {
+      "id": 2,
+      "name": "Kathmandu Durbar Square",
+      "category": "Heritage",
+      "thumbnail": "...",
+      "description": "A historic royal palace complex featuring ancient temples, courtyards, traditional architecture, and the famous Kumari Ghar.",
+      "address": "Basantapur, Kathmandu, Nepal",
+      "lat": 27.7048,
+      "lng": 85.3076
+    },
+    {
+      "id": 3,
+      "name": "Boudhanath Stupa",
+      "category": "Religious",
+      "thumbnail": "...",
+      "description": "One of Nepal's most iconic Buddhist stupas, surrounded by monasteries, prayer wheels, shops, and Tibetan Buddhist culture.",
+      "address": "Boudha, Kathmandu, Nepal",
+      "lat": 27.7215,
+      "lng": 85.362
+    },
+    {
+      "id": 4,
+      "name": "Swayambhunath Stupa",
+      "category": "Religious",
+      "thumbnail": "...",
+      "description": "An ancient Buddhist stupa situated on a hill overlooking Kathmandu Valley, offering beautiful views of the city.",
+      "address": "Swayambhu, Kathmandu, Nepal",
+      "lat": 27.7149,
+      "lng": 85.2903
+    },
+    {
+      "id": 5,
+      "name": "Pashupatinath Temple",
+      "category": "Religious",
+      "thumbnail": "...",
+      "description": "One of the most important Hindu temples dedicated to Lord Shiva, located along the banks of the Bagmati River.",
+      "address": "Gaushala, Kathmandu, Nepal",
+      "lat": 27.7104,
+      "lng": 85.3488
+    },
+    {
+      "id": 6,
+      "name": "Bhaktapur Durbar Square",
+      "category": "Heritage",
+      "thumbnail": "...",
+      "description": "A beautifully preserved historic square featuring traditional Newari architecture, temples, palaces, and intricate wood and stone carvings.",
+      "address": "Bhaktapur, Nepal",
+      "lat": 27.671,
+      "lng": 85.4298
+    },
+    {
+      "id": 7,
+      "name": "Garden of Dreams",
+      "category": "Nature",
+      "thumbnail": "...",
+      "description": "A peaceful historic garden in central Kathmandu featuring landscaped gardens, fountains, pavilions, and relaxing open spaces.",
+      "address": "Keshar Mahal, Kathmandu, Nepal",
+      "lat": 27.712,
+      "lng": 85.3172
+    },
+    {
+      "id": 8,
+      "name": "Chandragiri Hills",
+      "category": "Nature",
+      "thumbnail": "...",
+      "description": "A popular hill destination offering panoramic views of Kathmandu Valley and the Himalayan range, accessible by cable car.",
+      "address": "Chandragiri, Kathmandu, Nepal",
+      "lat": 27.6618,
+      "lng": 85.2456
+    },
+    {
+      "id": 9,
+      "name": "Godawari Botanical Garden",
+      "category": "Nature",
+      "thumbnail": "...",
+      "description": "A large botanical garden at the foot of the Phulchowki hills featuring diverse plants, flowers, walking trails, and peaceful green spaces.",
+      "address": "Godawari, Lalitpur, Nepal",
+      "lat": 27.5925,
+      "lng": 85.382
+    },
+    {
+      "id": 10,
+      "name": "Phulchowki",
+      "category": "Hiking",
+      "thumbnail": "...",
+      "description": "The highest hill surrounding Kathmandu Valley and a popular hiking destination known for forests, mountain views, and birdlife.",
+      "address": "Godawari, Lalitpur, Nepal",
+      "lat": 27.545,
+      "lng": 85.384
+    },
+    {
+      "id": 11,
+      "name": "Kirtipur",
+      "category": "Heritage",
+      "thumbnail": "...",
+      "description": "An ancient Newari settlement known for traditional houses, temples, narrow streets, and panoramic views of Kathmandu Valley.",
+      "address": "Kirtipur, Kathmandu, Nepal",
+      "lat": 27.6781,
+      "lng": 85.277
     }
   ]
 }
