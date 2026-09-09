@@ -1,34 +1,38 @@
 .profile-page {
-  max-width: 320px;
-  margin: 2rem auto;
+  max-width: 360px;
+  margin: var(--space-6) auto;
+  background: var(--color-surface);
+  padding: var(--space-6);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-md);
 }
 
-.header-row {
-  display: flex;
-  align-items: center;
-  gap: 0.75rem;
-  margin-bottom: 1.5rem;
+.header-row { 
+  display: flex; 
+  align-items: center; 
+  gap: var(--space-3); 
+  margin-bottom: var(--space-4); 
 }
 
-.name {
-  margin: 0;
-  font-weight: 600;
+.name { 
+  margin: 0; 
+  font-weight: 600; 
 }
 
-.email {
-  margin: 0;
-  color: #666;
-  font-size: 0.875rem;
+.email { 
+  margin: 0; 
+  color: var(--color-text-muted); 
+  font-size: 0.875rem; 
 }
 
-form {
-  display: flex;
-  flex-direction: column;
-  gap: 0.5rem;
-}
+form { 
+  display: flex; 
+  flex-direction: column; 
+  gap: var(--space-2);
+ }
 
-.error {
-  color: #c0392b;
-  font-size: 0.875rem;
-  margin: 0;
+.error { 
+  color: var(--color-danger); 
+  font-size: 0.875rem; 
+  margin: 0; 
 }

@@ -1,18 +1,26 @@
-.login-page {
-  display: flex;
-  justify-content: center;
-  padding-top: 4rem;
+.login-page { 
+  display: flex; 
+  justify-content: center; 
+  padding-top: 4rem; 
 }
 
 form {
   display: flex;
   flex-direction: column;
-  gap: 0.5rem;
-  width: 280px;
+  gap: var(--space-3);
+  width: 300px;
+  background: var(--color-surface);
+  padding: var(--space-6);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-md);
+}
+form h1 { 
+  margin: 0 0 var(--space-2);
+   font-size: 1.25rem; 
 }
 
-.error {
-  color: #c0392b;
-  font-size: 0.875rem;
-  margin: 0;
+.error { 
+  color: var(--color-danger); 
+  font-size: 0.875rem; 
+  margin: 0; 
 }
