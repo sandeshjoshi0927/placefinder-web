@@ -1,8 +1,15 @@
-import { ChangeDetectionStrategy, Component, computed, inject, signal } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  computed,
+  DestroyRef,
+  inject,
+  signal,
+} from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormControl, ReactiveFormsModule } from '@angular/forms';
 import { RouterLink } from '@angular/router';
-import { toSignal } from '@angular/core/rxjs-interop';
+import { takeUntilDestroyed, toSignal } from '@angular/core/rxjs-interop';
 import { debounceTime, distinctUntilChanged, startWith } from 'rxjs';
 import { PlacesService } from '../../../core/services/places.service';
 import { Place } from '../../../core/models/place.model';
@@ -19,6 +26,7 @@ type LoadState = 'loading' | 'loaded' | 'error';
 })
 export class PlacesListComponent {
   private placesService = inject(PlacesService);
+  private destroyRef = inject(DestroyRef);
 
   readonly state = signal<LoadState>('loading');
   readonly places = signal<Place[]>([]);
@@ -46,12 +54,15 @@ export class PlacesListComponent {
 
   private load(): void {
     this.state.set('loading');
-    this.placesService.getPlaces().subscribe({
-      next: (places) => {
-        this.places.set(places);
-        this.state.set('loaded');
-      },
-      error: () => this.state.set('error'),
-    });
+    this.placesService
+      .getPlaces()
+      .pipe(takeUntilDestroyed(this.destroyRef))
+      .subscribe({
+        next: (places) => {
+          this.places.set(places);
+          this.state.set('loaded');
+        },
+        error: () => this.state.set('error'),
+      });
   }
 }

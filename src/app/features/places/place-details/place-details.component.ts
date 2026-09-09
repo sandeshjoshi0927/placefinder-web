@@ -1,6 +1,7 @@
 import {
   ChangeDetectionStrategy,
   Component,
+  DestroyRef,
   Input,
   OnChanges,
   inject,
@@ -11,6 +12,7 @@ import { RouterLink } from '@angular/router';
 import { PlacesService } from '@core/services/places.service';
 import { Place } from '@core/models/place.model';
 import { MapComponent } from '@features/places/map/map.component';
+import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 
 type LoadState = 'loading' | 'loaded' | 'error';
 
@@ -26,6 +28,7 @@ export class PlaceDetailsComponent implements OnChanges {
   @Input() id!: string;
 
   private placesService = inject(PlacesService);
+  private destroyRef = inject(DestroyRef);
 
   readonly state = signal<LoadState>('loading');
   readonly place = signal<Place | null>(null);
@@ -33,12 +36,15 @@ export class PlaceDetailsComponent implements OnChanges {
   ngOnChanges(): void {
     this.state.set('loading');
 
-    this.placesService.getPlaceById(this.id).subscribe({
-      next: (place) => {
-        this.place.set(place);
-        this.state.set('loaded');
-      },
-      error: () => this.state.set('error'),
-    });
+    this.placesService
+      .getPlaceById(this.id)
+      .pipe(takeUntilDestroyed(this.destroyRef))
+      .subscribe({
+        next: (place) => {
+          this.place.set(place);
+          this.state.set('loaded');
+        },
+        error: () => this.state.set('error'),
+      });
   }
 }
