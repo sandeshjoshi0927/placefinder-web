@@ -4,10 +4,11 @@
       <p>Loading place…</p>
     }
     @case ('error') {
-      <p class="error" role="alert">
-        This place could not be found.
-        <a routerLink="/places">Back to list</a>
-      </p>
+      <div class="error" role="alert">
+        <h2>Place not found</h2>
+        <p>The place you're looking for doesn't exist.</p>
+        <a routerLink="/places">← Back to places</a>
+      </div>
     }
     @case ('loaded') {
       @if (place(); as p) {

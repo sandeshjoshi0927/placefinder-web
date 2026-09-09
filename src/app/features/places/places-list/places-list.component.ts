@@ -26,7 +26,7 @@ export class PlacesListComponent {
   searchControl = new FormControl('', { nonNullable: true });
 
   private searchTerm = toSignal(
-    this.searchControl.valueChanges.pipe(startWith(''), debounceTime(300), distinctUntilChanged()),
+    this.searchControl.valueChanges.pipe(startWith(''), debounceTime(500), distinctUntilChanged()),
     { initialValue: '' },
   );
 
