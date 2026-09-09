@@ -11,10 +11,11 @@ import { FormControl, ReactiveFormsModule } from '@angular/forms';
 import { RouterLink } from '@angular/router';
 import { takeUntilDestroyed, toSignal } from '@angular/core/rxjs-interop';
 import { debounceTime, distinctUntilChanged, startWith } from 'rxjs';
-import { PlacesService } from '../../../core/services/places.service';
-import { Place } from '../../../core/models/place.model';
+import { PlacesService } from '@core/services/places.service';
+import { Place } from '@core/models/place.model';
 
 type LoadState = 'loading' | 'loaded' | 'error';
+const ALL_CATEGORIES = 'All';
 
 @Component({
   selector: 'app-places-list',
@@ -32,16 +33,32 @@ export class PlacesListComponent {
   readonly places = signal<Place[]>([]);
 
   searchControl = new FormControl('', { nonNullable: true });
+  categoryControl = new FormControl(ALL_CATEGORIES, { nonNullable: true });
 
   private searchTerm = toSignal(
     this.searchControl.valueChanges.pipe(startWith(''), debounceTime(500), distinctUntilChanged()),
     { initialValue: '' },
   );
 
+  private selectedCategory = toSignal(
+    this.categoryControl.valueChanges.pipe(startWith(ALL_CATEGORIES)),
+    { initialValue: ALL_CATEGORIES },
+  );
+
+  readonly categories = computed(() => {
+    const unique = new Set(this.places().map((p) => p.category));
+    return [ALL_CATEGORIES, ...Array.from(unique).sort()];
+  });
+
   readonly filteredPlaces = computed(() => {
     const term = this.searchTerm().trim().toLowerCase();
-    if (!term) return this.places();
-    return this.places().filter((p) => p.name.toLowerCase().includes(term));
+    const category = this.selectedCategory();
+
+    return this.places().filter((p) => {
+      const matchesTerm = !term || p.name.toLowerCase().includes(term);
+      const matchesCategory = category === ALL_CATEGORIES || p.category === category;
+      return matchesTerm && matchesCategory;
+    });
   });
 
   constructor() {

@@ -1,37 +1,47 @@
 <div class="places-list">
-  <input
-    type="search"
-    placeholder="Search places…"
-    aria-label="Search places by name"
-    [formControl]="searchControl"
-  />
+  <div class="filters">
+    <div>
+      <label for="search" class="visually-hidden">Search places by name</label>
+      <input id="search" type="search" placeholder="Search places…" [formControl]="searchControl" />
+    </div>
+    <div>
+      <label for="category" class="visually-hidden">Filter by category</label>
+      <select id="category" [formControl]="categoryControl">
+        @for (cat of categories(); track cat) {
+          <option [value]="cat">{{ cat }}</option>
+        }
+      </select>
+    </div>
+  </div>
 
-  @switch (state()) {
-    @case ('loading') {
-      <p>Loading places…</p>
-    }
-    @case ('error') {
-      <p class="error" role="alert">
-        Could not load places.
-        <button type="button" (click)="retry()">Retry</button>
-      </p>
-    }
-    @case ('loaded') {
-      @if (filteredPlaces().length === 0) {
-        <p>No places match your search.</p>
-      } @else {
-        <ul>
-          @for (place of filteredPlaces(); track place.id) {
-            <li>
-              <a [routerLink]="['/places', place.id]">
-                <img [src]="place.thumbnail" [alt]="place.name" width="48" height="48" />
-                <span class="name">{{ place.name }}</span>
-                <span class="category">{{ place.category }}</span>
-              </a>
-            </li>
-          }
-        </ul>
+  <div aria-live="polite">
+    @switch (state()) {
+      @case ('loading') {
+        <p class="status">Loading places…</p>
+      }
+      @case ('error') {
+        <p class="error status" role="alert">
+          Could not load places.
+          <button type="button" class="secondary" (click)="retry()">Retry</button>
+        </p>
+      }
+      @case ('loaded') {
+        @if (filteredPlaces().length === 0) {
+          <p class="status">No places match your filters.</p>
+        } @else {
+          <ul>
+            @for (place of filteredPlaces(); track place.id) {
+              <li>
+                <a [routerLink]="['/places', place.id]">
+                  <img [src]="place.thumbnail" [alt]="place.name" width="48" height="48" />
+                  <span class="name">{{ place.name }}</span>
+                  <span class="category">{{ place.category }}</span>
+                </a>
+              </li>
+            }
+          </ul>
+        }
       }
     }
-  }
+  </div>
 </div>
