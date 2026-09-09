@@ -118,5 +118,6 @@
       "lat": 27.6781,
       "lng": 85.277
     }
-  ]
+  ],
+  "$schema": "./node_modules/json-server/schema.json"
 }

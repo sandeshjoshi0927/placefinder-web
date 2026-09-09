@@ -2,7 +2,7 @@
   <header>
     <a class="brand" routerLink="/places">PlaceFinder</a>
     <nav>
-      <a routerLink="/profile">{{ auth.currentUser()?.name }}</a>
+      <a routerLink="/profile"> {{ auth.currentUser()?.name }}</a>
       <button type="button" (click)="logout()">Log out</button>
     </nav>
   </header>
