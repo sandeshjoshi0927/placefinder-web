@@ -16,6 +16,5 @@ describe('AppComponent', () => {
 
   it('should render title', async () => {
     const fixture = TestBed.createComponent(AppComponent);
-    await fixture.whenStable();
-  });
+    await fixture.whenStable();  });
 });
